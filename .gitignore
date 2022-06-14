@@ -26,4 +26,5 @@ emojicalc-*.tar
 /tmp/
 
 # ignore built executables
+smalc
 *.exe
