@@ -2,17 +2,7 @@ defmodule Main do
   def main(["-help"]), do: IO.puts("too lazy to write a help guide. look at lib/main.ex, its pretty self-explanatory")
 
   def main(["-repl"]) do
-    expr = IO.gets("-> ")
-    if expr == "done\n" do
-      IO.puts("i dont want to catch you using a regular calculator")
-    else
-      try do
-        expr |> Smalc.run() |> IO.puts()
-      rescue
-        e -> IO.puts("Error occured: #{Exception.message(e)}")
-      end
-      main(["-repl"])
-    end
+    IO.gets("-> ") |> handle_expression()
   end
 
   def main(["-eval", expr]) do
@@ -29,5 +19,26 @@ defmodule Main do
 
   def main(_) do
     exit("Argument error")
+  end
+
+  # Handling repl inputs
+
+  defp handle_expression("done\n"), do: IO.puts("i dont want to catch you using a regular calculator")
+
+  defp handle_expression(expression) do
+    case Smalc.run(expression) do
+      {:ok, value} ->
+        IO.puts(value)
+
+      {:error, line, message} ->
+        IO.puts(
+          """
+          Line #{line}
+          #{message}
+          """
+        )
+    end
+
+    main(["-repl"])
   end
 end
