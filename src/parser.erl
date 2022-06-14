@@ -372,7 +372,7 @@ yeccpars2_2_(__Stack0) ->
 yeccpars2_5_(__Stack0) ->
  [___1 | __Stack] = __Stack0,
  [begin
-              ___1
+                               ___1
   end | __Stack].
 
 -compile({inline,yeccpars2_8_/1}).
@@ -388,7 +388,7 @@ yeccpars2_8_(__Stack0) ->
 yeccpars2_11_(__Stack0) ->
  [___3,___2,___1 | __Stack] = __Stack0,
  [begin
-                        {sub, ___1, ___3}
+                               {sub, ___1, ___3}
   end | __Stack].
 
 -compile({inline,yeccpars2_12_/1}).
@@ -396,7 +396,7 @@ yeccpars2_11_(__Stack0) ->
 yeccpars2_12_(__Stack0) ->
  [___3,___2,___1 | __Stack] = __Stack0,
  [begin
-                         {divi, ___1, ___3}
+                               {divi, ___1, ___3}
   end | __Stack].
 
 -compile({inline,yeccpars2_13_/1}).
@@ -404,7 +404,7 @@ yeccpars2_12_(__Stack0) ->
 yeccpars2_13_(__Stack0) ->
  [___3,___2,___1 | __Stack] = __Stack0,
  [begin
-                        {mul, ___1, ___2}
+                               {mul, ___1, ___2}
   end | __Stack].
 
 -compile({inline,yeccpars2_15_/1}).
@@ -412,7 +412,7 @@ yeccpars2_13_(__Stack0) ->
 yeccpars2_15_(__Stack0) ->
  [___3,___2,___1 | __Stack] = __Stack0,
  [begin
-                        {add, ___2, ___3}
+                               {add, ___2, ___3}
   end | __Stack].
 
 
