@@ -1,4 +1,6 @@
 defmodule Main do
+  def main(["-help"]), do: IO.puts("too lazy to write a help guide. look at lib/main.ex, its pretty self-explanatory")
+
   def main(["-repl"]) do
     expr = IO.gets("-> ")
     if expr == "done\n" do
@@ -6,11 +8,10 @@ defmodule Main do
     else
       try do
         expr |> Smalc.run() |> IO.puts()
-      catch
-        e -> IO.puts("Error: #{Exception.message(e)}")
-      after
-        main(["-repl"])
+      rescue
+        e -> IO.puts("Error occured: #{Exception.message(e)}")
       end
+      main(["-repl"])
     end
   end
 
