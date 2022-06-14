@@ -11,9 +11,9 @@ prog -> expr : '$1'.
 
 expr -> num : '$1'. 
 expr -> bracket expr bracket : '$2'.
-expr -> expr add expr : {add, '$1', '$3'}.
+expr -> add expr expr : {add, '$2', '$3'}.
 expr -> expr sub expr : {sub, '$1', '$3'}.
-expr -> expr mul expr : {mul, '$1', '$3'}.
+expr -> expr expr mul : {mul, '$1', '$2'}.
 expr -> expr divi expr : {divi, '$1', '$3'}.
 
 Erlang code.

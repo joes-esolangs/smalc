@@ -16,8 +16,10 @@ defmodule Smalc do
     end
   end
 
+  def preprocessor(code), do: code |> String.replace("[", "(((") |> String.replace("]", "))")
+
   def run(code) do
-    with {:ok, tokens, _} <- :lexer.string(to_charlist(code)),
+    with {:ok, tokens, _} <- :lexer.string(to_charlist(preprocessor(code))),
          {:ok, ast} <- :parser.parse(tokens) do
       {:ok, ast |> eval()}
     end
@@ -44,4 +46,5 @@ defmodule Smalc do
   def eval({:mul, e1, e2}), do: base16_op(eval(e1), eval(e2), &*/2)
   def eval({:sub, e1, e2}), do: base16_op(eval(e1), eval(e2), &-/2)
   def eval({:divi, e1, e2}), do: base16_op(eval(e1), eval(e2), &//2)
+  def eval(_), do: {:error, "unknown node"}
 end
