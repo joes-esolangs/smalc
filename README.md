@@ -3,7 +3,9 @@
 
 # features
 
-- All operators are emojis: 🤣 is addition, 💏 is multiplication, 🔪 is subtraction and 🐦 is division.
+- The operator symbols are messed up: `min` is addition, `+` is multiplication, `max` is subtraction and `-` is division.
+- The order of calling is messed up: `min` is prefix, `-` is postfix, `+` and `max` are infix.
+- The preprocessor replaces all `[` with `(((` and `]` with `))`, really giving programmers a pain.
 - All numbers are in base 16
 - All decimals get rounded
 - For grouping stuff you can mismatch any `{` `}` `[` `]` `(` `)`
