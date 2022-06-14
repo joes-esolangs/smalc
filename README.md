@@ -3,12 +3,12 @@
 
 # features
 
-- All operators are emojis
+- All operators are emojis: 🤣 is addition, 💏 is multiplication, 🔪 is subtraction and 🐦 is division.
 - All numbers are in base 16
 - All decimals get rounded
 - For grouping stuff you can mismatch any `{` `}` `[` `]` `(` `)`
 - All operators are right associative
-- All the precedences are messed up. Division is 40, multiplication is 50, addition is 50, and subtraction is 60.
+- All the precedences are messed up: Division is 40, multiplication is 50, addition is 50, and subtraction is 60.
 
 # how to use
 
