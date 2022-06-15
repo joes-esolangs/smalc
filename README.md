@@ -1,12 +1,15 @@
 # smalc
- a joke calculator written in elixir
+ a ~~joke~~ calculator written in elixir to overtake desmos
 
 # features
 
 look in the source and figure them out yourself
 
-# how to use
+# getting started
 
-Run `mix escript.build` and it will generate `smalc.exe`. Use `smalc filename` to run a file, or `smalc -eval "code"` to evaluate an expression, or `smalc -repl` for a repl. 
+to be honest i dont know myself. nor should you.
+read the documentation, actually, dont do that
 
-Run `smalc -help` for the help guide.
+# documentation
+
+HAHHAHAHAHAHHAHA you thought there would actually be some? jokes on you
