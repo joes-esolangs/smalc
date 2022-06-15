@@ -3,6 +3,7 @@
 
 # features
 
+- Define variables with `: value ident :` and call them with `reversedIdent .`
 - The operator symbols are messed up: `min` is addition, `+` is multiplication, `max` is subtraction and `-` is division.
 - The order of calling is messed up: `min` is prefix, `+` is postfix, `-` and `max` are infix.
 - The preprocessor replaces all `[` with `(((` and `]` with `))`, really giving programmers a pain.
