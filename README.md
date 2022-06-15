@@ -5,7 +5,11 @@
 
 look in the source and figure them out yourself
 
-# how to use
+# getting started
 
 to be honest i dont know myself. nor should you.
 read the documentation, actually, dont do that
+
+# documentation
+
+HAHHAHAHAHAHHAHA you thought there would actually be some? jokes on you
