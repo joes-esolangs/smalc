@@ -1,5 +1,5 @@
 # smalc
- a joke calculator written in elixir
+ a ~~joke~~ calculator written in elixir to overtake desmos
 
 # features
 
