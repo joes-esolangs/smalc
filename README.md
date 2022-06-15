@@ -7,6 +7,4 @@ look in the source and figure them out yourself
 
 # how to use
 
-Run `mix escript.build` and it will generate `smalc.exe`. Use `smalc filename` to run a file, or `smalc -eval "code"` to evaluate an expression, or `smalc -repl` for a repl. 
-
-Run `smalc -help` for the help guide.
+to be honest its pretty self explanatory. or just google :)
