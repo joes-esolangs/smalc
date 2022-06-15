@@ -13,6 +13,7 @@ min            : {token, {add, TokenLine}}.
 max            : {token, {sub, TokenLine}}.
 \+             : {token, {mul, TokenLine}}.
 \-             : {token, {divi, TokenLine}}.
+extrema        : {token, {pow, TokenLine}}.
 \:             : {token, {':', TokenLine}}.
 \.             : {token, {'.', TokenLine}}.
 {IDENT}        : {token, {ident, TokenLine, TokenChars}}.

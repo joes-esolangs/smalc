@@ -1,7 +1,7 @@
 defmodule Main do
   def main(["-help"]),
     do:
-      IO.puts("too lazy to write a help guide. look at lib/main.ex, its pretty self-explanatory")
+      IO.puts("too lazy to write a help guide. look at lib/main.ex, it says it all. elixir is very readable")
 
   def main(["-repl"]) do
     case IO.gets("-> ") do
