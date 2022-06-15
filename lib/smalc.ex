@@ -21,7 +21,7 @@ defmodule Smalc do
   def run(code) do
     with {:ok, tokens, _} <- :lexer.string(to_charlist(preprocessor(code))),
          {:ok, ast} <- :parser.parse(tokens) do
-      {:ok, ast |> eval()}
+      {:ok, ast |> eval(%{})}
     end
     |> normalize_value()
   end
@@ -39,12 +39,20 @@ defmodule Smalc do
   defp normalize_value({:error, {line, :parser, error}}),
     do: {:error, line, "Parser error: #{error_to_string(error)}"}
 
+  defp normalize_value({:error, error}),
+    do: {:error, 0, "Error: #{error_to_string(error)}"}
+
   # AST evaluation
 
-  def eval({:num, _, n}), do: n
-  def eval({:add, e1, e2}), do: base16_op(eval(e1), eval(e2), &+/2)
-  def eval({:mul, e1, e2}), do: base16_op(eval(e1), eval(e2), &*/2)
-  def eval({:sub, e1, e2}), do: base16_op(eval(e1), eval(e2), &-/2)
-  def eval({:divi, e1, e2}), do: base16_op(eval(e1), eval(e2), &//2)
-  def eval(_), do: {:error, "unknown node"}
+  def eval({:num, _, n}, _), do: n
+  def eval({:add, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &+/2)
+  def eval({:mul, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &*/2)
+  def eval({:sub, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &-/2)
+  def eval({:divi, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &//2)
+  def eval({:assign, {:ident, _, name}, e1, e2}, ctx) do
+    new_ctx = ctx |> Map.put(name, eval(e1, ctx))
+    eval(e2, new_ctx)
+  end
+  def eval({:get, {:ident, _, name}}, ctx), do: ctx |> Map.get(name |> to_string() |> String.reverse() |> to_charlist())
+  def eval(_, _), do: {:error, "unknown token"}
 end

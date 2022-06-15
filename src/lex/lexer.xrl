@@ -1,8 +1,9 @@
 Definitions.
 
-NUM        = [0-9|A|B|C|D|E|F]+
+NUM        = [0-9A-F]+
 WHITESPACE = [\s\t\n\r]
 BRACKET    = \[|\]|\(|\)|\{|\}
+IDENT      = [a-zA-Z0-9]+
 
 Rules.
 
@@ -12,6 +13,9 @@ min            : {token, {add, TokenLine}}.
 max            : {token, {sub, TokenLine}}.
 \+             : {token, {mul, TokenLine}}.
 \-             : {token, {divi, TokenLine}}.
-{WHITESPACE}+ : skip_token.
+\:             : {token, {':', TokenLine}}.
+\.             : {token, {'.', TokenLine}}.
+{IDENT}        : {token, {ident, TokenLine, TokenChars}}.
+{WHITESPACE}+  : skip_token.
 
 Erlang code.
