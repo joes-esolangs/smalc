@@ -18,6 +18,7 @@ expr -> expr expr mul                        : {mul, '$1', '$2'}.
 expr -> expr divi expr                       : {divi, '$1', '$3'}.
 expr -> expr pow expr expr                   : {pow, '$1', '$4'}.
 % maybe change it later to make it weirder
+% also make it possible to redefine numbers
 expr -> ':' expr ident ':' expr              : {assign, '$3', '$2', '$5'}.
 expr -> ident '.'                            : {get, '$1'}.
 

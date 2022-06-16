@@ -1,6 +1,6 @@
 -module(parser).
 -export([parse/1, parse_and_scan/1, format_error/1]).
--file("src/parser/parser.yrl", 23).
+-file("src/parser/parser.yrl", 24).
 
 -file("c:/Program Files/erl-24.0/lib/parsetools-2.3/include/yeccpre.hrl", 0).
 %%
@@ -494,7 +494,7 @@ yeccpars2_6_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_7_/1}).
--file("src/parser/parser.yrl", 18).
+-file("src/parser/parser.yrl", 19).
 yeccpars2_7_(__Stack0) ->
  [___2,___1 | __Stack] = __Stack0,
  [begin
@@ -550,7 +550,7 @@ yeccpars2_20_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_24_/1}).
--file("src/parser/parser.yrl", 17).
+-file("src/parser/parser.yrl", 18).
 yeccpars2_24_(__Stack0) ->
  [___5,___4,___3,___2,___1 | __Stack] = __Stack0,
  [begin
@@ -558,4 +558,4 @@ yeccpars2_24_(__Stack0) ->
   end | __Stack].
 
 
--file("src/parser/parser.yrl", 24).
+-file("src/parser/parser.yrl", 25).

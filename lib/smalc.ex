@@ -7,8 +7,6 @@ defmodule Smalc do
     case Smalc.run(expr) do
       {:ok, value} ->
         IO.puts(value)
-      # make error messages more menacing
-      # 90% chance of correct error message, 8% chance of threat, 2% chance of incorrect error message
       {:error, line, message} ->
         IO.puts("""
         Line #{line}
@@ -24,24 +22,8 @@ defmodule Smalc do
          {:ok, ast} <- :parser.parse(tokens) do
       {:ok, ast |> eval(%{'PI' => "3"})}
     end
-    |> normalize_value()
+    |> Error.normalize_value()
   end
-
-  # Errors and values
-
-  def error_to_string({:illegal, char}), do: "illegal character: #{char}"
-  def error_to_string(error), do: error
-
-  defp normalize_value({:ok, value}), do: {:ok, value}
-
-  defp normalize_value({:error, {_, :lexer, error}, line}),
-    do: {:error, line, "Lexer Error: #{error_to_string(error)}"}
-
-  defp normalize_value({:error, {line, :parser, error}}),
-    do: {:error, line, "Parser error: #{error_to_string(error)}"}
-
-  defp normalize_value({:error, error}),
-    do: {:error, 0, "Error: #{error_to_string(error)}"}
 
   # AST evaluation
 
