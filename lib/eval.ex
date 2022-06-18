@@ -5,7 +5,7 @@ defmodule Smalc do
 
   def output(expr, ctx \\ %{'PI' => "3"}) do
     case Smalc.run(expr, ctx) do
-      {:ok, value} ->
+      {:ok, {value, _}} ->
         IO.puts(value)
       {:error, line, message} ->
         IO.puts("""
@@ -33,24 +33,28 @@ defmodule Smalc do
 
   # AST evaluation
 
+  @op_map %{
+    :add => &+/2,
+    :mul => &*/2,
+    :sub => &-/2,
+    :divi => &//2,
+    :pow => &**/2,
+    :mod => &rem/2
+  }
+
   def eval({:assign, {:ident, _, name}, e1, e2}, ctx) do
     new_ctx = ctx |> Map.put(name, eval(e1, ctx))
-    eval(e2, new_ctx)
+    {eval(e2, new_ctx) |> elem(0), ctx}
   end
   def eval({:ident, _, name}, ctx) do
     id = name |> to_string() |> String.reverse() |> to_charlist()
     if ctx |> Map.has_key?(id) do
-      ctx |> Map.get(id)
+      {ctx |> Map.get(id), ctx}
     else
-      name
+      {name, ctx}
     end
   end
-  def eval({:add, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &+/2)
-  def eval({:mul, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &*/2)
-  def eval({:sub, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &-/2)
-  def eval({:divi, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &//2)
-  def eval({:pow, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &**/2)
-  def eval({:mod, e1, e2}, ctx), do: base16_op(eval(e1, ctx), eval(e2, ctx), &Integer.mod/2)
-  def eval({:sqrt, e}, ctx), do: base16_op(eval(e, ctx), &:math.sqrt/1)
+  def eval({op, e1, e2}, ctx), do: {base16_op(eval(e1, ctx), eval(e2, ctx), Map.get(@op_map, op)), ctx}
+  def eval({:sqrt, e}, ctx), do: {base16_op(eval(e, ctx), &:math.sqrt/1), ctx}
   def eval(_, _), do: {:error, "unknown token"}
 end

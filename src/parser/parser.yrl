@@ -24,7 +24,7 @@ expr -> expr sub expr                        : {sub, '$1', '$3'}.
 expr -> expr expr mul                        : {mul, '$1', '$2'}.
 expr -> expr divi expr                       : {divi, '$1', '$3'}.
 expr -> expr pow expr expr                   : {pow, '$1', '$4'}.
-expr -> mod expr expr expr                   : {mod, '$2', '$4'}.
+expr -> mod expr expr expr                   : {mod, '$3', '$4'}.
 expr -> expr sqrt                            : {sqrt, '$1'}.
 
 Erlang code.
