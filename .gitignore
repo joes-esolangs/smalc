@@ -28,3 +28,5 @@ emojicalc-*.tar
 # ignore built executables
 smalc
 *.exe
+
+src/*.erl

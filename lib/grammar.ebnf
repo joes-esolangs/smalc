@@ -1,0 +1,10 @@
+expr : e1 | assign
+e1 : (e2 "extrema" e2)* e2 | e2
+e2 : (e3 "-")* e3 | e3
+e3 : e4 (e4 "+")* | e4 
+e4 : ("min" e5)* e5 | e5 
+e5 : (e6 "max")* e6 | e6
+e6 : ("@" e7 e7)* e7 | e7
+e7 : <ident> | <rbrack> e1 <lbrack>
+
+assign : ":" expr expr ":" expr 
