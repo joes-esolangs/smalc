@@ -5,8 +5,9 @@ defmodule Smalc do
 
   def output(expr, ctx \\ %{'PI' => "3"}) do
     case Smalc.run(expr, ctx) do
-      {:ok, {value, _}} ->
+      {:ok, {value, ctx}} ->
         IO.puts(value)
+        ctx
       {:error, line, message} ->
         IO.puts("""
         Line #{line}
