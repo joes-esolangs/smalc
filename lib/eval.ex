@@ -3,6 +3,7 @@ defmodule Smalc do
 
   # Running and outputting
 
+  # TODO: fix problem
   def output(expr, ctx \\ %{'PI' => "3"}) do
     case Smalc.run(expr, ctx) do
       {:ok, {value, ctx}} ->
@@ -44,8 +45,8 @@ defmodule Smalc do
   }
 
   def eval({:assign, {:ident, _, name}, e1, e2}, ctx) do
-    new_ctx = ctx |> Map.put(name, eval(e1, ctx))
-    {eval(e2, new_ctx) |> elem(0), ctx}
+    new_ctx = ctx |> Map.put(name, eval(e1, ctx) |> elem(0))
+    {eval(e2, new_ctx) |> elem(0), new_ctx}
   end
   def eval({:ident, _, name}, ctx) do
     id = name |> to_string() |> String.reverse() |> to_charlist()
