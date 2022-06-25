@@ -57,5 +57,5 @@ consume_until([Char|In], TargetChar, Remain, [Char|Out]) :-
 
 pretty_print(Code) :-
     tokenize(Code, Out),
-    print_term(Out, []).
+    maplist(print_term, Out).
 % string_codes/2 to convert to codes

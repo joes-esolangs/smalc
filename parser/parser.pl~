@@ -29,7 +29,7 @@ e5 --> e6.
 e6 --> [mod_t(_)], e7, e7.
 e6 --> e7.
 
-e7 --> [ident_t(_, _)].
+e7(id(I)) --> [ident_t(I, _)].
 e7 --> [l_brack_t(_)], e1, [r_brack_t(_)].
 
-assign --> [colon_t(_)], e1, [ident_t(_, _)], [colon_t(_)], e1.
+assign(id(I)) --> [colon_t(_)], e1, [ident_t(I, _)], [colon_t(_)], e1.
