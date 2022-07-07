@@ -22,7 +22,7 @@ defmodule Calc.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nimble_parsec, "~> 1.0"}
+      {:erlog, github: "rvirding/erlog"}
     ]
   end
 
