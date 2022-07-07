@@ -30,3 +30,5 @@ smalc
 *.exe
 
 src/*.erl
+
+*.pl~

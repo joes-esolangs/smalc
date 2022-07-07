@@ -29,7 +29,7 @@ tokenize([0'+|T_i], [mul_t(LineNo)|T_o], LineNo) :- tokenize(T_i, T_o, LineNo).
 tokenize([0'-|T_i], [div_t(LineNo)|T_o], LineNo) :- tokenize(T_i, T_o, LineNo).
 tokenize([0'e, 0'x, 0't, 0'r, 0'e, 0'm, 0'a|T_i], [pow_t(LineNo)|T_o], LineNo) :- !, tokenize(T_i, T_o, LineNo).
 tokenize([0'@|T_i], [mod_t(LineNo)|T_o], LineNo) :- tokenize(T_i, T_o, LineNo).
-tokenize([0's, 0'i, 0'n|T_i], [sub_t(LineNo)|T_o], LineNo) :- !, tokenize(T_i, T_o, LineNo).
+tokenize([0's, 0'i, 0'n|T_i], [sqrt_t(LineNo)|T_o], LineNo) :- !, tokenize(T_i, T_o, LineNo).
 
 tokenize([0':|T_i], [colon_t(LineNo)|T_o], LineNo) :- tokenize(T_i, T_o, LineNo).
 
