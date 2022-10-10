@@ -1,4 +1,6 @@
 # smalc
+`min {578 F4240 + - 1) max 10 3D0900 = (((1400 * 1000000) / 1) - 16) + 4000000`
+
  a ~~joke~~ calculator written in elixir to overtake desmos
 
 # features
